@@ -48,6 +48,8 @@ https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-boot-with
 
 (报告可课后完成)请理解grub multiboot spec的含义，并分析ucore_lab是如何实现符合grub multiboot spec的，并形成spoc练习报告。
 
+> 因为U盘的设置问题，不能启动。
+
 ### (2)(spoc) 理解用户进程的生命周期。
 
 > 需写练习报告和简单编码，完成后放到git server 对应的git repo中
@@ -69,3 +71,5 @@ https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-boot-with
 能够把个人思考题和上述知识点中的内容展示出来：即在ucore运行过程中通过`cprintf`函数来完整地展现出来进程A相关的动态执行和内部数据/状态变化的细节。(约全面细致约好)
 
 请完成如下练习，完成代码填写，并形成spoc练习报告
+
+> 代码与报告在：https://github.com/qw540232188/ucore_lab/tree/master/related_info/lab5/lab5-spoc-discuss/answer

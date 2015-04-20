@@ -1,7 +1,7 @@
-#03-2-spoc-discussion.md çš„é—®é¢˜æ–‡ä»¶
-æœ‰ä¸€å°å‡æƒ³çš„è®¡ç®—æœºï¼Œé¡µå¤§å°ï¼ˆpage sizeï¼‰ä¸º32 Bytesï¼Œæ”¯æŒ32KBçš„è™šæ‹Ÿåœ°å€ç©ºé—´ï¼ˆvirtual address spaceï¼‰,æœ‰4KBçš„ç‰©ç†å†…å­˜ç©ºé—´ï¼ˆphysical memoryï¼‰ï¼Œé‡‡ç”¨äºŒçº§é¡µè¡¨ï¼Œä¸€ä¸ªé¡µç›®å½•é¡¹ï¼ˆpage directory entry ï¼ŒPDEï¼‰å¤§å°ä¸º1 Byte,ä¸€ä¸ªé¡µè¡¨é¡¹ï¼ˆpage-table entriesï¼Œ PTEsï¼‰å¤§å°ä¸º1 Byteï¼Œ1ä¸ªé¡µç›®å½•è¡¨å¤§å°ä¸º32 Bytesï¼Œ1ä¸ªé¡µè¡¨å¤§å°ä¸º32 Bytesã€‚é¡µç›®å½•åŸºå€å¯„å­˜å™¨ï¼ˆpage directory base registerï¼ŒPDBRï¼‰ä¿å­˜äº†é¡µç›®å½•è¡¨çš„ç‰©ç†åœ°å€ï¼ˆæŒ‰é¡µå¯¹é½ï¼‰ï¼Œå…¶å€¼ä¸º0x220ï¼ˆåè¿›åˆ¶ä¸º544ï¼‰ï¼Œ
+#03-2-spoc-discussion.md µÄÎÊÌâÎÄ¼þ
+ÓÐÒ»Ì¨¼ÙÏëµÄ¼ÆËã»ú£¬Ò³´óÐ¡£¨page size£©Îª32 Bytes£¬Ö§³Ö32KBµÄÐéÄâµØÖ·¿Õ¼ä£¨virtual address space£©,ÓÐ4KBµÄÎïÀíÄÚ´æ¿Õ¼ä£¨physical memory£©£¬²ÉÓÃ¶þ¼¶Ò³±í£¬Ò»¸öÒ³Ä¿Â¼Ïî£¨page directory entry £¬PDE£©´óÐ¡Îª1 Byte,Ò»¸öÒ³±íÏî£¨page-table entries£¬ PTEs£©´óÐ¡Îª1 Byte£¬1¸öÒ³Ä¿Â¼±í´óÐ¡Îª32 Bytes£¬1¸öÒ³±í´óÐ¡Îª32 Bytes¡£Ò³Ä¿Â¼»ùÖ·¼Ä´æÆ÷£¨page directory base register£¬PDBR£©±£´æÁËÒ³Ä¿Â¼±íµÄÎïÀíµØÖ·£¨°´Ò³¶ÔÆë£©£¬ÆäÖµÎª0x220£¨Ê®½øÖÆÎª544£©£¬
 
-4KBçš„ç‰©ç†å†…å­˜å¸ƒå±€å’Œå…·ä½“å€¼å¦‚ä¸‹ï¼š
+4KBµÄÎïÀíÄÚ´æ²¼¾ÖºÍ¾ßÌåÖµÈçÏÂ£º
 ```
 page 00: 7f 7f 7f 7f 7f 7f b2 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 7f 
 page 01: 01 19 1d 11 05 1a 1e 15 0f 0b 0a 06 14 0d 06 03 14 09 0f 0a 1b 1b 00 06 0a 1e 18 0a 06 14 19 1c 
@@ -133,7 +133,7 @@ page 7e: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 page 7f: 11 03 11 00 1b 0a 0b 11 13 12 0f 13 1a 0d 0f 19 00 04 0a 06 1b 04 03 09 0f 19 1e 1a 12 01 01 13 
 ```
 
-è¯·å›žç­”ä¸‹åˆ—è™šåœ°å€æ˜¯å¦æœ‰åˆæ³•å¯¹åº”çš„ç‰©ç†å†…å­˜ï¼Œè¯·ç»™å‡ºå¯¹åº”çš„pde index, pde contents, pte index, pte contentsã€‚
+Çë»Ø´ðÏÂÁÐÐéµØÖ·ÊÇ·ñÓÐºÏ·¨¶ÔÓ¦µÄÎïÀíÄÚ´æ£¬Çë¸ø³ö¶ÔÓ¦µÄpde index, pde contents, pte index, pte contents¡£
 ```
 Virtual Address 6c74
 Virtual Address 6b22
@@ -147,7 +147,7 @@ Virtual Address 390e
 Virtual Address 748b
 ```
 
-æ¯”å¦‚ç­”æ¡ˆå¯ä»¥å¦‚ä¸‹è¡¨ç¤ºï¼š
+±ÈÈç´ð°¸¿ÉÒÔÈçÏÂ±íÊ¾£º
 ```
 Virtual Address 7570:
   --> pde index:0x1d  pde contents:(valid 1, pfn 0x33)
