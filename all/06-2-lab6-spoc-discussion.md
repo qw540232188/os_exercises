@@ -38,6 +38,17 @@
 
 请完成如下练习，完成代码填写，并形成spoc练习报告
 > 需写练习报告和简单编码，完成后放到git server 对应的git repo中
+```
+组员：
+徐天宇 计22 2012011275
+覃伟 计22 2012011278
+韩慧阳 计22 2012011276
+杨博文 计22 2012011288
+ 
+https://github.com/THLatte/ucore_lab/blob/master/labcodes_answer/lab6_result
+
+输出结果见:lab6spoc_result.txt
+```
 
 ### 练习用的[lab6 spoc exercise project source code](https://github.com/chyyuu/ucore_lab/tree/master/labcodes_answer/lab6_result)
 
