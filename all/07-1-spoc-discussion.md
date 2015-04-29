@@ -37,18 +37,61 @@
 ## 小组思考题
 
 1. （spoc）阅读[简化x86计算机模拟器的使用说明](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab7/lab7-spoc-exercise.md)，理解基于简化x86计算机的汇编代码。
-
+ ```
+ 基本理解了
+ ```
+ 
 2. （spoc)了解race condition. 进入[race-condition代码目录](https://github.com/chyyuu/ucore_lab/tree/master/related_info/lab7/race-condition)。
 
  - 执行 `./x86.py -p loop.s -t 1 -i 100 -R dx`， 请问`dx`的值是什么？
+ ```
+ -1
+ ```
  - 执行 `./x86.py -p loop.s -t 2 -i 100 -a dx=3,dx=3 -R dx` ， 请问`dx`的值是什么？
+ ```
+ -1  -1
+ ```
  - 执行 `./x86.py -p loop.s -t 2 -i 3 -r -a dx=3,dx=3 -R dx`， 请问`dx`的值是什么？
+ ```
+ -1  -1
+ ```
  - 变量x的内存地址为2000, `./x86.py -p looping-race-nolock.s -t 1 -M 2000`, 请问变量x的值是什么？
+ ```
+ 1
+ ```
  - 变量x的内存地址为2000, `./x86.py -p looping-race-nolock.s -t 2 -a bx=3 -M 2000`, 请问变量x的值是什么？为何每个线程要循环3次？
+ 
+ ```
+ 6(因为进程之间共享了内存资源，并且没有中断，第2个进程得到的2000处的值是第1个进程改写之后的)
+ 循环3次是因为bx(寄存器，进程之间不共享)是循环次数。
+ ```
  - 变量x的内存地址为2000, `./x86.py -p looping-race-nolock.s -t 2 -M 2000 -i 4 -r -s 0`， 请问变量x的值是什么？
+ ```
+ 1或2
+ 因为两个进程之间发生了切换，
+ 切换的时候第2个进程得到的2000处的值是第1个进程改写之前或者之后的
+ (根据seed来具体判断)
+ ```
  - 变量x的内存地址为2000, `./x86.py -p looping-race-nolock.s -t 2 -M 2000 -i 4 -r -s 1`， 请问变量x的值是什么？
+ ```
+ 1或2
+ 因为两个进程之间发生了切换，
+ 切换的时候第2个进程得到的2000处的值是第1个进程改写之前或者之后的
+ (根据seed来具体判断)
+ ```
  - 变量x的内存地址为2000, `./x86.py -p looping-race-nolock.s -t 2 -M 2000 -i 4 -r -s 2`， 请问变量x的值是什么？ 
+ ```
+ 1或2
+ 因为两个进程之间发生了切换，
+ 切换的时候第2个进程得到的2000处的值是第1个进程改写之前或者之后的
+ (根据seed来具体判断)
+ ```
  - 变量x的内存地址为2000, `./x86.py -p looping-race-nolock.s -a bx=1 -t 2 -M 2000 -i 1`， 请问变量x的值是什么？ 
+ ```
+ 1
+ 因为两个进程之间发生了切换，
+ 切换的时候第2个进程得到的2000处的值是第1个进程改写之前的
+ ```
 
 3. （spoc） 了解software-based lock, hardware-based lock, [software-hardware-lock代码目录](https://github.com/chyyuu/ucore_lab/tree/master/related_info/lab7/software-hardware-locks)
 
@@ -72,4 +115,12 @@ int FetchAndAdd(int *ptr) {
   *ptr = old + 1;
   return old;
 }
+```
+解答：
+```
+flag.s：没有正确实现。反例：-i=1、2。
+peterson.s：没有正确实现。反例：-i=1、2。
+test-and-set.s：(2、3线程均)正确实现。
+ticket.s：(2、3线程均)正确实现。
+test-and-test-and-set.s：(2、3线程均)正确实现。
 ```
