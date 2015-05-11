@@ -44,8 +44,12 @@
 ## 小组思考题
 
  - （spoc） 每人用python实现[银行家算法](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab7/deadlock/bankers-homework.py)。大致输出可参考[参考输出](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab7/deadlock/example-output.txt)。除了`YOUR CODE`部分需要填写代码外，在算法的具体实现上，效率也不高，可进一步改进执行效率。
+ > 代码在：https://github.com/qw540232188/ucore_lab/blob/master/related_info/lab7/deadlock/bankers-homework.py
 
  - (spoc) 以小组为单位，请思考在lab1~lab5的基础上，是否能够实现IPC机制，请写出如何实现信号，管道或共享内存（三选一）的设计方案。
+ > 共享内存：通过系统调用，申请一段内存为共享内存，用于与其他进程的通信，该段内存地址空间将通过修改页表的方式映射到该进程的虚拟地址空间，     
+ 该段内存地址空间有一个唯一的标志id（存于PCB中），其他进程如果需要进行通信，就要先通过该id申请并且建立映射关系（通过相关函数获取PCB中的       
+ 这个id参数），这样就可以共享这一段内存空间了。但是在实际上使用的时候，需要借助同步互斥来进行读、写操作。
  
  - (spoc) 扩展：用C语言实现某daemon程序，可检测某网络服务失效或崩溃，并用信号量机制通知重启网络服务。[信号机制的例子](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab7/ipc/signal-ex1.c)
 
