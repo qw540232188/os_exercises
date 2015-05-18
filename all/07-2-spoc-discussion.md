@@ -66,3 +66,4 @@ s.count--;              //有可用资源，占用该资源；
 代码连接：https://github.com/qw540232188/ucore_lab/tree/master/related_info/lab7/semaphore_condition/20150506spoc
 ```
 
+2. (spoc)设计某个方法，能够动态检查出对于两个或多个进程的同步互斥问题执行中，没有互斥问题，能够同步等，以说明实现的正确性。
