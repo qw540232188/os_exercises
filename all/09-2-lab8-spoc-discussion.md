@@ -47,6 +47,40 @@
 
 1. (spoc) 理解文件访问的执行过程，即在ucore运行过程中通过`cprintf`函数来完整地展现出来读一个文件在ucore中的整个执行过程，(越全面细致越好)
 完成代码填写，并形成spoc练习报告，需写练习报告和简单编码，完成后放到git server 对应的git repo中
+ > 代码在：https://github.com/THLatte/ucore_lab/tree/master/labcodes_answer/lab8_result
+ ```
+ 小组成员：
+	覃伟 2012011278
+	徐天宇 2012011275
+	韩慧阳 2012011276
+	杨博文 2012011288
+ ```
+ > 输出说明：
+ ```
+ 涉及文件kern/fs/file.c、kern/fs/sfs/sfs_io.c、kern/fs/sysfile.c、
+ kern/fs/sfs/sfs_inode.c、kern/fs/devs/dev_disk0.c和kern/driver/ide.c。
+ 读取文件的输出结果如下：
+ LAB8 SPOC: in sysfile_read: read a file.
+ LAB8 SPOC: file_read start.
+	LAB8 SPOC: File acquired.
+	LAB8 SPOC: before vop_read.
+		LAB8 SPOC: in vop_read(actually sfs_read).
+		LAB8 SPOC: in sfs_io: Start reading.
+			LAB8 SPOC: sys_io_nolock start.
+			LAB8 SPOC: in sfs_io_nolock: set operation(buf and block).
+			LAB8 SPOC: in sfs_io_nolock: start reading.
+				LAB8 SPOC: disk0 io
+					LAB8 SPOC: ide_read_secs.
+			LAB8 SPOC: in sfs_io_nolock: finish reading.
+		LAB8 SPOC: in sfs_io: Finish reading.
+	LAB8 SPOC: after vop_read.
+	LAB8 SPOC: Move file pointer.
+	LAB8 SPOC: file released.
+ 缩进代表调用关系，其中由于vop_read(sys_read)仅调用了sys_io，将其放在同一层。
+ 调用关系为：
+ syscall -> sys_read -> sysfile_read -> file_read -> vop_read(sfs_read) 
+ -> sfs_io(write参数为0) -> sfs_io_nolock -> ... -> disk0_io -> ide_read_secs
+ ```
 
 2. （spoc） 在下面的实验代码的基础上，实现基于文件系统的pipe IPC机制
 
